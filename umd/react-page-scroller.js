@@ -4110,14 +4110,14 @@ var ReactPageScroller = function ReactPageScroller(_ref) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.Children.toArray(children);
   }, [children]);
   var scrollPage = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(function (nextComponentIndex) {
-    var _children$componentIn;
+    var _children$nextCompone;
 
     if (onBeforePageScroll) {
       onBeforePageScroll(nextComponentIndex);
     }
 
-    console.log('react page scrollder child index', componentIndex, 'child props', children[componentIndex].props);
-    pageContainer.current.style.transform = "translate3d(0, " + nextComponentIndex * -Number(((_children$componentIn = children[componentIndex].props) === null || _children$componentIn === void 0 ? void 0 : _children$componentIn.height) || 100) + "%, 0)";
+    console.log('react page scrollder child index', nextComponentIndex, 'child props', children[nextComponentIndex].props);
+    pageContainer.current.style.transform = "translate3d(0, " + nextComponentIndex * -Number(((_children$nextCompone = children[nextComponentIndex].props) === null || _children$nextCompone === void 0 ? void 0 : _children$nextCompone.height) || 100) + "%, 0)";
   }, [onBeforePageScroll]);
   var addNextComponent = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(function (componentsToRenderOnMountLength) {
     var tempComponentsToRenderLength = 0;
