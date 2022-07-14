@@ -1,11 +1,13 @@
 /coverage
 /demo/dist
-/es
-/lib
+# /es
+# /lib
 /node_modules
-/umd
+# /umd
 /npm-debug.log*
 package-lock.json
 /.idea
 .npmrc
 /.git
+.history
+yarn.lock

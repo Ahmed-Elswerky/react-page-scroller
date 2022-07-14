@@ -67,7 +67,7 @@ const ReactPageScroller = ({
       }
 
       pageContainer.current.style.transform = `translate3d(0, ${nextComponentIndex *
-        -80}%, 0)`;
+        -100}%, 0)`;
     },
     [onBeforePageScroll],
   );
@@ -133,7 +133,7 @@ const ReactPageScroller = ({
     while (i < componentsToRenderLength && !isNil(children[i])) {
       containers[i] = true;
       newComponentsToRender.push(
-        <div key={i} style={{ height: "80vh", width: "100%" }}>
+        <div key={i} style={{ height: children[i].props.height||"80vh", width: "100%" }}>
           {React.cloneElement(children[i], { ...children[i].props })}
         </div>,
       );
@@ -347,7 +347,7 @@ const ReactPageScroller = ({
         ref={pageContainer}
         onWheel={wheelScroll}
         style={{
-          height: "80vh",
+          height: "100%",
           width: "100%",
           transition: `transform ${animationTimer}ms ${transitionTimingFunction}`,
           outline: "none",
