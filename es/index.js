@@ -118,7 +118,7 @@ var ReactPageScroller = function ReactPageScroller(_ref) {
       newComponentsToRender.push( /*#__PURE__*/React.createElement("div", {
         key: i,
         style: {
-          height: children[i].props.height || "80vh",
+          height: children[i].props.height || "90vh",
           width: "100%"
         }
       }, React.cloneElement(children[i], _extends({}, children[i].props))));
