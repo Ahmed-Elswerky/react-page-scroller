@@ -65,7 +65,8 @@ const ReactPageScroller = ({
       if (onBeforePageScroll) {
         onBeforePageScroll(nextComponentIndex);
       }
-
+      console.log('react page scrollder child index',componentIndex,'child props',children[componentIndex].props);
+      
       pageContainer.current.style.transform = `translate3d(0, ${nextComponentIndex *
         -Number(children[componentIndex].props?.height || 100)}%, 0)`;
     },

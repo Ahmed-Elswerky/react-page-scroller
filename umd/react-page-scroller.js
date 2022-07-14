@@ -4116,6 +4116,7 @@ var ReactPageScroller = function ReactPageScroller(_ref) {
       onBeforePageScroll(nextComponentIndex);
     }
 
+    console.log('react page scrollder child index', componentIndex, 'child props', children[componentIndex].props);
     pageContainer.current.style.transform = "translate3d(0, " + nextComponentIndex * -Number(((_children$componentIn = children[componentIndex].props) === null || _children$componentIn === void 0 ? void 0 : _children$componentIn.height) || 100) + "%, 0)";
   }, [onBeforePageScroll]);
   var addNextComponent = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(function (componentsToRenderOnMountLength) {
