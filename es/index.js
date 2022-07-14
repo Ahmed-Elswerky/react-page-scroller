@@ -59,15 +59,15 @@ var ReactPageScroller = function ReactPageScroller(_ref) {
     return React.Children.toArray(children);
   }, [children]);
   var scrollPage = useCallback(function (nextComponentIndex) {
-    var _children$index$props;
-
     if (onBeforePageScroll) {
       onBeforePageScroll(nextComponentIndex);
     }
 
     var index = nextComponentIndex > 0 ? nextComponentIndex - 1 : 0;
     console.log('react page scrollder child index', index, 'child props', children[index].props);
-    pageContainer.current.style.transform = "translate3d(0, " + nextComponentIndex * -Number(((_children$index$props = children[index].props) === null || _children$index$props === void 0 ? void 0 : _children$index$props.height) || 100) + "%, 0)";
+    pageContainer.current.style.transform = "translate3d(0, " + children.reduce(function (a, b, k) {
+      return a + (k < index ? b.height : 0);
+    }, 0) * -1 + "%, 0)";
   }, [onBeforePageScroll]);
   var addNextComponent = useCallback(function (componentsToRenderOnMountLength) {
     var tempComponentsToRenderLength = 0;
