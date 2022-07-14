@@ -66,12 +66,15 @@ const ReactPageScroller = ({
         onBeforePageScroll(nextComponentIndex);
       }
       let index = nextComponentIndex>0?nextComponentIndex-1:0;
+      sum = children.reduce(
+        (a, b, k) =>{
+          console.log('',k,index,b.height);
+          return a + (k <= index ? b.height : 0)},
+        0,
+      )
       console.log('react page scrollder child index',index,'child props',children[index].props);
 
-      pageContainer.current.style.transform = `translate3d(0, ${children.reduce(
-        (a, b, k) => a + (k < index ? b.height : 0),
-        0,
-      ) * -1}%, 0)`;
+      pageContainer.current.style.transform = `translate3d(0, ${sum * -1}%, 0)`;
     },
     [onBeforePageScroll],
   );

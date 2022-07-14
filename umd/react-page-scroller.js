@@ -4115,10 +4115,12 @@ var ReactPageScroller = function ReactPageScroller(_ref) {
     }
 
     var index = nextComponentIndex > 0 ? nextComponentIndex - 1 : 0;
+    sum = children.reduce(function (a, b, k) {
+      console.log('', k, index, b.height);
+      return a + (k <= index ? b.height : 0);
+    }, 0);
     console.log('react page scrollder child index', index, 'child props', children[index].props);
-    pageContainer.current.style.transform = "translate3d(0, " + children.reduce(function (a, b, k) {
-      return a + (k < index ? b.height : 0);
-    }, 0) * -1 + "%, 0)";
+    pageContainer.current.style.transform = "translate3d(0, " + sum * -1 + "%, 0)";
   }, [onBeforePageScroll]);
   var addNextComponent = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(function (componentsToRenderOnMountLength) {
     var tempComponentsToRenderLength = 0;
