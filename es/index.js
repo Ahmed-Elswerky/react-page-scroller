@@ -114,6 +114,7 @@ var ReactPageScroller = function ReactPageScroller(_ref) {
 
     while (i < componentsToRenderLength && !isNil(children[i])) {
       containers[i] = true;
+      console.log('react page scrollder cild height', children[i].props.height);
       newComponentsToRender.push( /*#__PURE__*/React.createElement("div", {
         key: i,
         style: {

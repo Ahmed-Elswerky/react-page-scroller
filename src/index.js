@@ -132,6 +132,7 @@ const ReactPageScroller = ({
 
     while (i < componentsToRenderLength && !isNil(children[i])) {
       containers[i] = true;
+      console.log('react page scrollder cild height',children[i].props.height);
       newComponentsToRender.push(
         <div key={i} style={{ height: children[i].props.height||"80vh", width: "100%" }}>
           {React.cloneElement(children[i], { ...children[i].props })}
