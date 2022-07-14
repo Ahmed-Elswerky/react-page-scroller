@@ -59,11 +59,13 @@ var ReactPageScroller = function ReactPageScroller(_ref) {
     return React.Children.toArray(children);
   }, [children]);
   var scrollPage = useCallback(function (nextComponentIndex) {
+    var _children$componentIn;
+
     if (onBeforePageScroll) {
       onBeforePageScroll(nextComponentIndex);
     }
 
-    pageContainer.current.style.transform = "translate3d(0, " + nextComponentIndex * -100 + "%, 0)";
+    pageContainer.current.style.transform = "translate3d(0, " + nextComponentIndex * -Number(((_children$componentIn = children[componentIndex].props) === null || _children$componentIn === void 0 ? void 0 : _children$componentIn.height) || 100) + "%, 0)";
   }, [onBeforePageScroll]);
   var addNextComponent = useCallback(function (componentsToRenderOnMountLength) {
     var tempComponentsToRenderLength = 0;
@@ -114,11 +116,10 @@ var ReactPageScroller = function ReactPageScroller(_ref) {
 
     while (i < componentsToRenderLength && !isNil(children[i])) {
       containers[i] = true;
-      console.log('react page scrollder cild height', children[i].props.height);
       newComponentsToRender.push( /*#__PURE__*/React.createElement("div", {
         key: i,
         style: {
-          height: children[i].props.height || "90vh",
+          height: children[i].props.height + 'vh' || "90vh",
           width: "100%"
         }
       }, React.cloneElement(children[i], _extends({}, children[i].props))));

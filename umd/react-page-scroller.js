@@ -4110,11 +4110,13 @@ var ReactPageScroller = function ReactPageScroller(_ref) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.Children.toArray(children);
   }, [children]);
   var scrollPage = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(function (nextComponentIndex) {
+    var _children$componentIn;
+
     if (onBeforePageScroll) {
       onBeforePageScroll(nextComponentIndex);
     }
 
-    pageContainer.current.style.transform = "translate3d(0, " + nextComponentIndex * -100 + "%, 0)";
+    pageContainer.current.style.transform = "translate3d(0, " + nextComponentIndex * -Number(((_children$componentIn = children[componentIndex].props) === null || _children$componentIn === void 0 ? void 0 : _children$componentIn.height) || 100) + "%, 0)";
   }, [onBeforePageScroll]);
   var addNextComponent = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(function (componentsToRenderOnMountLength) {
     var tempComponentsToRenderLength = 0;
@@ -4165,11 +4167,10 @@ var ReactPageScroller = function ReactPageScroller(_ref) {
 
     while (i < componentsToRenderLength && !Object(_utils__WEBPACK_IMPORTED_MODULE_3__[/* isNil */ "a"])(children[i])) {
       containers[i] = true;
-      console.log('react page scrollder cild height', children[i].props.height);
       newComponentsToRender.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         key: i,
         style: {
-          height: children[i].props.height || "90vh",
+          height: children[i].props.height + 'vh' || false,
           width: "100%"
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.cloneElement(children[i], _extends({}, children[i].props))));

@@ -67,7 +67,7 @@ const ReactPageScroller = ({
       }
 
       pageContainer.current.style.transform = `translate3d(0, ${nextComponentIndex *
-        -100}%, 0)`;
+        -Number(children[componentIndex].props?.height || 100)}%, 0)`;
     },
     [onBeforePageScroll],
   );
@@ -132,9 +132,8 @@ const ReactPageScroller = ({
 
     while (i < componentsToRenderLength && !isNil(children[i])) {
       containers[i] = true;
-      console.log('react page scrollder cild height',children[i].props.height);
       newComponentsToRender.push(
-        <div key={i} style={{ height: children[i].props.height||"90vh", width: "100%" }}>
+        <div key={i} style={{ height: children[i].props.height+'vh'||"90vh", width: "100%" }}>
           {React.cloneElement(children[i], { ...children[i].props })}
         </div>,
       );
